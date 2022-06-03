@@ -1,13 +1,13 @@
 from scripts.predicao import Predicao
-from sklearn.tree import DecisionTreeClassifier
+from sklearn.ensemble import RandomForestClassifier
 
 
-class PredicaoTree(Predicao):    
+class PredicaoRandomForest(Predicao):    
     def __init__(self, arq, alvo):
         super().__init__(arq, alvo)
     
     def classeClassificador(self):
-        return DecisionTreeClassifier(random_state=42)
+        return RandomForestClassifier(n_estimators=20, random_state=42)
         
     
     

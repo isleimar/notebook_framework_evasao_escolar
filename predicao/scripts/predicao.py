@@ -34,7 +34,7 @@ class Predicao:
         self.__x_teste = None
         self.__y_treino = None
         self.__y_teste = None
-        self.__classificador = self.classeClassificador()(random_state=42)
+        self.__classificador = self.classeClassificador()
         pd.set_option('mode.chained_assignment',None)
         pass
     

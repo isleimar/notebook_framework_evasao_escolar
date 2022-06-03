@@ -9,6 +9,7 @@ class Tratamento:
         self.__campos = campos
         self.__qtdCampos = 0
         self.__qtdRegistros = 0
+        self.__instituicao = []
         pass
     
     def __abrirOrig(self):        
@@ -29,6 +30,15 @@ class Tratamento:
     
     def __filtrarCampos(self, df):
         return df[self.__campos]
+    
+    def __filtrarInstituicao(self, df):
+        print(self.__instituicao)
+        if len(self.__instituicao) == 0:
+            return df
+        df = df[df['instituicao'].isin(self.__instituicao)]
+        print(df['instituicao'])
+        return df
+    
     
     @property
     def nomeArqOrig(self)->str:
@@ -55,8 +65,15 @@ class Tratamento:
     def campos(self):
         return self.__campos
     @campos.setter
-    def campos(self, tipoCursos):
+    def campos(self, campos):
         self.__campos = campos
+    
+    @property
+    def instituicao(self):
+        return self.__instituicao
+    @instituicao.setter
+    def instituicao(self, instituicao):
+        self.__instituicao = instituicao
     
     @property
     def qtdCampos(self)->int:
@@ -71,6 +88,7 @@ class Tratamento:
         df = self.__removerNulos(df)
         df = self.__filtrarCursos(df)
         df  = self.__filtrarIdade(df)
+        df = self.__filtrarInstituicao(df)
         df = self.__filtrarCampos(df)
         self.__qtdRegistros, self.__qtdCampos = df.shape
         df.to_csv(self.__nomeArqDest, index = False)

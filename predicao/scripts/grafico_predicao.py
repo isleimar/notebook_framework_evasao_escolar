@@ -26,14 +26,16 @@ class GraficoPredicao:
         resultado = preditor.resultado
         fpr, tpr, _ = roc_curve(y_teste, resultado)
         roc_display = RocCurveDisplay(fpr=fpr, tpr=tpr).plot(ax = ax)
+        ax.title.set_text(type(preditor.classificador).__name__)
     
-    def mostrarGraficos(self):        
-        fig, axes = plt.subplots(nrows = len(self.__preditores), ncols = 2, figsize=(10,5))
+    def mostrarGraficos(self):
+        qtd = len(self.__preditores)
+        fig, axes = plt.subplots(nrows = len(self.__preditores), ncols = 2, figsize=(10,qtd * 5))
         i = 0
-        for preditor in self.__preditores:                                 
-            self.__plotMatizConfusao(preditor, axes[i])
-            self.__plotCurvaROU(preditor, axes[i +1])
-            i += 2
+        for preditor in self.__preditores:
+            self.__plotMatizConfusao(preditor, axes[i][0])
+            self.__plotCurvaROU(preditor, axes[i][1])
+            i += 1
         plt.tight_layout()
         plt.show()
         
