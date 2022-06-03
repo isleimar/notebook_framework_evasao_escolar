@@ -1,3 +1,12 @@
+#Notebook
+*.bundle.*
+lib/
+node_modules/
+*.egg-info/
+.ipynb_checkpoints
+*.tsbuildinfo
+data/
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
