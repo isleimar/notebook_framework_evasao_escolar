@@ -6,8 +6,8 @@ class PredicaoTree(Predicao):
     def __init__(self, arq, alvo):
         super().__init__(arq, alvo)
     
-    def getClassificador(self):
-        return DecisionTreeClassifier(random_state=42)
+    def classeClassificador(self):
+        return DecisionTreeClassifier
         
     
     
