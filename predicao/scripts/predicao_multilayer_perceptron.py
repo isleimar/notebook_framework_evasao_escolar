@@ -1,12 +1,13 @@
 from scripts.predicao import Predicao
-from sklearn.naive_bayes import ComplementNB 
+from sklearn.neural_network import MLPClassifier
 
-class PredicaoNaive(Predicao):    
+
+class PredicaoMultilayerPerceptron(Predicao):    
     def __init__(self, arq, alvo):
         super().__init__(arq, alvo)
     
     def classeClassificador(self):
-        return ComplementNB()
+        return MLPClassifier(random_state=42, max_iter=300)
         
     
     
